@@ -18,4 +18,6 @@
     - name: Debug
       ansible.builtin.debug:
         var: file
+    - ansible.builtin.debug:
+        msg: "File contents {{ lookup('ansible.builtin.file', 'test.txt') }}"
       
