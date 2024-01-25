@@ -6,7 +6,7 @@
         content: '# This file was moved to /etc/other.conf'
         dest: /tmp/test.txt
         owner: root
-        group: users
+        group: root
         mode: '0644'
       become: yes
     - name: Fetch file
