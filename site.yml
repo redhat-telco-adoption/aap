@@ -3,7 +3,7 @@
   tasks:
     - name: Copy using inline content
       ansible.builtin.copy:
-        content: '# This file was moved to /etc/other.conf'
+        content: "# This file was moved to {{ ansible_host }}"
         dest: /tmp/test.txt
         owner: root
         group: root
@@ -12,12 +12,12 @@
     - name: Fetch file
       ansible.builtin.fetch:
         src: /tmp/test.txt
-        dest: test.txt
+        dest: "{{ansible_host}}_test.txt"
         flat: true
       register: file
     - name: Debug
       ansible.builtin.debug:
         var: file
     - ansible.builtin.debug:
-        msg: "File contents {{ lookup('ansible.builtin.file', 'test.txt') }}"
+        msg: "File contents {{ lookup('ansible.builtin.file', '{{ansible_host}}_test.txt') }}"
       
