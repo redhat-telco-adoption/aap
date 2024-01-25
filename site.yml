@@ -1,9 +1,3 @@
-- name: Cat localhost
-  hosts: localhost
-  tasks:
-    - name: Print inventory file
-      ansible.builtin.debug:
-        msg: "the value of foo.txt is {{ lookup('ansible.builtin.file', '/runner/inventory/hosts') }}"
 - name: Test
   hosts: web
   tasks:
@@ -11,6 +5,10 @@
       ansible.builtin.copy:
         content: '# This file was moved to /etc/other.conf'
         dest: /tmp/test.txt
+        owner: root
+        group: users
+        mode: '0644'
+      become: yes
     - name: Fetch file
       ansible.builtin.fetch:
         src: /tmp/test.txt
