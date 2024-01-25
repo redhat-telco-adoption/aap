@@ -1,5 +1,5 @@
 - name: Test
-  hosts: all
+  hosts: web
   tasks:
     - name: Fetch file
       ansible.builtin.fetch:
