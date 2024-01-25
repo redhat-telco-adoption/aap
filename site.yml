@@ -7,6 +7,10 @@
 - name: Test
   hosts: web
   tasks:
+    - name: Copy using inline content
+      ansible.builtin.copy:
+        content: '# This file was moved to /etc/other.conf'
+        dest: /tmp/test.txt
     - name: Fetch file
       ansible.builtin.fetch:
         src: /tmp/test.txt
