@@ -1,0 +1,13 @@
+- name: Test
+  hosts: all
+  tasks:
+    - name: Fetch file
+      ansible.builtin.fetch:
+        src: /tmp/test.txt
+        dest: test.txt
+        flat: true
+      register: file
+    - name: Debug
+      ansible.builtin.debug:
+        var: file
+      
